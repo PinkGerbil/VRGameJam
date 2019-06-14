@@ -17,7 +17,7 @@ public class OVRController : MonoBehaviour
     public GameObject selectedObject = null; 
 
     public bool pickedUp;
-
+    
     private void Awake()
     {
         PlayerEvents.OnControllerSource += UpdateOrigin;
@@ -64,15 +64,6 @@ public class OVRController : MonoBehaviour
     {
         CurrentOrigin = controllerObject.transform;
         print(CurrentOrigin);
-
-        if(controller == OVRInput.Controller.Touchpad)
-        {
-            lineRenderer.enabled = false;
-        }
-        else
-        {
-            lineRenderer.enabled = true; 
-        }
     }
 
     private GameObject UpdatePointerStatus()

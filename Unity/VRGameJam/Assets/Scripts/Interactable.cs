@@ -14,7 +14,7 @@ public class Interactable : MonoBehaviour
 
     public void PickUp(GameObject target)
     {
-        this.transform.position = target.transform.position + new Vector3(1.0f, 0.0f, 1.0f);
+        this.transform.position = target.transform.position + new Vector3(0.5f, 1.0f, 1.0f);
     }
     public void PutDown(Vector3 target, GameObject selected)
     {

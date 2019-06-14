@@ -86,16 +86,16 @@ public class PlayerEvents : MonoBehaviour
     /// </summary>
     private void Input()
     {
-        //touchpad down
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad))
+        //trigger down
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             if(OnTouchpadDown != null)
             {
                 OnTouchpadDown();
             }
         }
-        //touchpad up
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryTouchpad))
+        //trigger up
+        if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
         {
             if(OnTouchpadUp != null)
             {
