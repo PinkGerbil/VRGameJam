@@ -12,8 +12,11 @@ public class OVRController : MonoBehaviour
 
     public UnityAction<Vector3, GameObject> OnPointerUpdate = null; 
 
-    private Transform CurrentOrigin = null; 
-    public GameObject CurrentObject = null; 
+    private Transform CurrentOrigin = null;
+    public GameObject CurrentObject = null;
+    public GameObject selectedObject = null; 
+
+    public bool pickedUp;
 
     private void Awake()
     {
@@ -37,21 +40,11 @@ public class OVRController : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        OVRInput.Update();
-
         Vector3 hitPoint = UpdateLine();
 
         CurrentObject = UpdatePointerStatus();
         if (OnPointerUpdate != null)
             OnPointerUpdate(hitPoint, CurrentObject);
-
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger))
-        {
-            if(!lineRenderer.enabled)
-                lineRenderer.enabled = false;
-            else
-                lineRenderer.enabled = true;
-        }
     }
 
     private Vector3 UpdateLine()
@@ -115,6 +108,19 @@ public class OVRController : MonoBehaviour
             return; 
 
         Interactable interactable = CurrentObject.GetComponent<Interactable>();
-        interactable.Pressed(); 
+        
+        if (!pickedUp && CurrentObject.tag == "Moveable")
+        {
+            interactable.PickUp(this.gameObject);
+            selectedObject = CurrentObject;
+            pickedUp = true;
+        }
+        else
+        {
+            RaycastHit hit = CreateRaycast(everythingMask);
+            interactable.PutDown(hit.transform.gameObject, selectedObject);
+            selectedObject = null; 
+            pickedUp = false;
+        }
     }
 }
