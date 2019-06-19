@@ -52,12 +52,19 @@ public class Placing : MonoBehaviour
         tileLocation = null;
     }
 
+    /// <summary>
+    /// this is called once every frame
+    /// </summary>
     public void Update()
     {
         //check adjacent tiles
+        CheckAdjacentTiles();
         //check the connection of the object on tile
     }
 
+    /// <summary>
+    /// Checks adjacent tiles and returns them
+    /// </summary>
     private void CheckAdjacentTiles()
     {
         if (GO_PC.GetConnectionUp())

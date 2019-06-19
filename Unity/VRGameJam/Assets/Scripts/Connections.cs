@@ -66,7 +66,7 @@ public class Connections : MonoBehaviour
     /// <summary>
     /// returns the array of tiles
     /// </summary>
-    /// <returns>tiles</returns>
+    /// <returns>the tiles array</returns>
     public GameObject[,] GetArray()
     {
         return tiles;
