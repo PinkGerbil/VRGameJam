@@ -127,11 +127,17 @@ public class PlayerEvents : MonoBehaviour
         return check; 
     }
 
+    /// <summary>
+    /// while the player is connected it will set the input to true
+    /// </summary>
     private void PlayerFound()
     {
         m_InputActive = true;
     }
 
+    /// <summary>
+    /// if the player disconnects for whatever reason it will set the input to inactive
+    /// </summary>
     private void PlayerLost()
     {
         m_InputActive = false;

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    /// <summary>
+    /// this is called once the trigger on the controller has been pressed
+    /// </summary>
     public void Pressed()
     {
         MeshRenderer renderer = GetComponent<MeshRenderer>();
@@ -12,17 +15,31 @@ public class Interactable : MonoBehaviour
         renderer.enabled = flip; 
     }
 
+    /// <summary>
+    /// if you pull the trigger on a moveable object you will be able to pick it up
+    /// </summary>
+    /// <param name="target">GameObject</param>
     public void PickUp(GameObject target)
     {
+        this.gameObject.GetComponent<Placing>().PickUpFromTile();
         this.transform.position = target.transform.position + new Vector3(0.5f, 1.0f, 1.0f);
     }
-    public void PutDown(Vector3 target, GameObject selected)
-    {
-        selected.transform.position = target;
-    }
 
+    /// <summary>
+    /// if the trigger is pulled when you are holding a moveable object and looking at a tile you are able to place the object on the tile
+    /// </summary>
+    /// <param name="target">GameObject</param>
+    /// <param name="selected">GameObject</param>
     public void PutDown(GameObject target, GameObject selected)
     {
-        selected.transform.position = target.transform.position;
+        if(selected.GetComponent<Placing>() != null)
+        {
+            if(!selected.GetComponent<Placing>().GetInUse())
+            {
+                target.GetComponent<Useable>().SetInUse(true);
+                selected.GetComponent<Placing>().inUse(target.gameObject);
+                selected.transform.position = target.transform.position;
+            }
+        }
     }
 }

@@ -18,26 +18,28 @@ public class OVRController : MonoBehaviour
 
     public bool pickedUp;
     
+    /// <summary>
+    /// on initialisation 
+    /// </summary>
     private void Awake()
     {
         PlayerEvents.OnControllerSource += UpdateOrigin;
         PlayerEvents.OnTouchpadDown += ProcessTouchpadDown;
     }
 
-    // Start is called before the first frame update
-    private void Start()
-    {
-        SetLineColour();
-    }
-
+    /// <summary>
+    /// on the object being destroyed it will call this function
+    /// </summary>
     private void OnDestroy()
     {
 
         PlayerEvents.OnControllerSource -= UpdateOrigin;
         PlayerEvents.OnTouchpadDown -= ProcessTouchpadDown;
     }
-
-    // Update is called once per frame
+    
+    /// <summary>
+    /// Update is called once per frame 
+    /// </summary>
     private void Update()
     {
         Vector3 hitPoint = UpdateLine();
@@ -47,6 +49,10 @@ public class OVRController : MonoBehaviour
             OnPointerUpdate(hitPoint, CurrentObject);
     }
 
+    /// <summary>
+    /// Updates the lines position based on the raycast from the controller and returns the end position of the raycast
+    /// </summary>
+    /// <returns>endPosition</returns>
     private Vector3 UpdateLine()
     {
         RaycastHit hit = CreateRaycast(everythingMask);
@@ -60,12 +66,20 @@ public class OVRController : MonoBehaviour
         return endPosition;
     }
 
+    /// <summary>
+    /// Updates the start of the line based on the controller's location
+    /// </summary>
+    /// <param name="controller">OVRInput.Controller</param>
+    /// <param name="controllerObject">GameObject</param>
     private void UpdateOrigin(OVRInput.Controller controller, GameObject controllerObject)
     {
         CurrentOrigin = controllerObject.transform;
-        print(CurrentOrigin);
     }
 
+    /// <summary>
+    /// Checks to see what object the raycast is hitting and if you can interact with the object it shall return it
+    /// </summary>
+    /// <returns>The gameobject the raycast hits or null</returns>
     private GameObject UpdatePointerStatus()
     {
         RaycastHit hit = CreateRaycast(interactableMask);
@@ -76,6 +90,11 @@ public class OVRController : MonoBehaviour
         return null; 
     }
 
+    /// <summary>
+    /// Creates the raycast and returns what the raycast hits
+    /// </summary>
+    /// <param name="layer"> int</param>
+    /// <returns>what the raycast hits</returns>
     private RaycastHit CreateRaycast(int layer)
     {
         RaycastHit hit;
@@ -85,14 +104,9 @@ public class OVRController : MonoBehaviour
         return hit;
     }
 
-    private void SetLineColour()
-    {
-        if (!lineRenderer)
-            return; 
-        Color endColour = Color.white;
-        endColour.a = 0.0f;
-        lineRenderer.endColor = endColour;
-    }
+    /// <summary>
+    /// if the controller trigger is down it will check to see if it can interact with object the raycast is hitting
+    /// </summary>
     private void ProcessTouchpadDown()
     {
         if (!CurrentObject)

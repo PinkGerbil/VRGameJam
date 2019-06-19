@@ -12,7 +12,9 @@ public class Reticle : MonoBehaviour
 
     private Camera m_Camera = null;
 
-    // Start is called before the first frame update
+    /// <summary>
+    /// called once the object is initialised 
+    /// </summary>
     void Awake()
     {
         pointer.OnPointerUpdate += UpdateSprite;
@@ -20,17 +22,27 @@ public class Reticle : MonoBehaviour
         m_Camera = Camera.main;
     }
 
-    // Update is called once per frame
+    /// <summary>
+    /// Update is called once per frame
+    /// </summary>
     void Update()
     {
         transform.LookAt(m_Camera.gameObject.transform);
     }
 
+    /// <summary>
+    /// calls this once the object is destroyed
+    /// </summary>
     private void OnDestroy()
     {
         pointer.OnPointerUpdate -= UpdateSprite;
     }
 
+    /// <summary>
+    /// updates the reticle's sprite based on what it is hitting
+    /// </summary>
+    /// <param name="point">Vector3</param>
+    /// <param name="hitObject">GameObject</param>
     private void UpdateSprite(Vector3 point, GameObject hitObject)
     {
         transform.position = point;
