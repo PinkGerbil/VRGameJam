@@ -1703,6 +1703,7 @@ GameObject:
   - component: {fileID: 473296550}
   - component: {fileID: 473296554}
   - component: {fileID: 473296556}
+  - component: {fileID: 473296555}
   m_Layer: 9
   m_Name: Cube (2)
   m_TagString: Moveable
@@ -1794,6 +1795,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7685da2363184fba7cdbe6b23067d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &473296555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 473296549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7b5801787e2bb4d923763586333605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectionUp: 1
+  ConnectionDown: 0
+  ConnectionLeft: 0
+  ConnectionRight: 1
 --- !u!114 &473296556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2017,6 +2034,7 @@ GameObject:
   - component: {fileID: 591301834}
   - component: {fileID: 591301838}
   - component: {fileID: 591301840}
+  - component: {fileID: 591301839}
   m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Moveable
@@ -2108,6 +2126,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7685da2363184fba7cdbe6b23067d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &591301839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591301833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7b5801787e2bb4d923763586333605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectionUp: 0
+  ConnectionDown: 1
+  ConnectionLeft: 0
+  ConnectionRight: 1
 --- !u!114 &591301840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4662,6 +4696,7 @@ GameObject:
   - component: {fileID: 1865946391}
   - component: {fileID: 1865946395}
   - component: {fileID: 1865946397}
+  - component: {fileID: 1865946396}
   m_Layer: 9
   m_Name: Cube
   m_TagString: Moveable
@@ -4699,7 +4734,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3143dc9923de68f4ab4f17af219adba1, type: 2}
+  - {fileID: 2100000, guid: c040a70c1b40ec64bb8d9d1bd98edda7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4753,6 +4788,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45e7685da2363184fba7cdbe6b23067d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1865946396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865946390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7b5801787e2bb4d923763586333605, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConnectionUp: 1
+  ConnectionDown: 0
+  ConnectionLeft: 1
+  ConnectionRight: 0
 --- !u!114 &1865946397
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,6 +6,8 @@ public class Placing : MonoBehaviour
 {
     public bool used;
 
+    PipeConnections GO_PC;
+
     public GameObject tileLocation;
 
     /// <summary>
@@ -13,6 +15,8 @@ public class Placing : MonoBehaviour
     /// </summary>
     public void Start()
     {
+         GO_PC = this.gameObject.GetComponent<PipeConnections>(); 
+
         used = false;
 
         tileLocation = null;
@@ -46,5 +50,50 @@ public class Placing : MonoBehaviour
         used = false;
 
         tileLocation = null;
+    }
+
+    public void Update()
+    {
+        //check adjacent tiles
+        //check the connection of the object on tile
+    }
+
+    private void CheckAdjacentTiles()
+    {
+        if (GO_PC.GetConnectionUp())
+        {
+            if (tileLocation.GetComponent<TileConnections>().GetConnectionUp())
+            {
+                //connected up
+
+            }
+        }
+
+        if(GO_PC.GetConnectionDown())
+        {
+            if (tileLocation.GetComponent<TileConnections>().GetConnectionDown())
+            {
+                //connected down
+
+            }   
+        }
+
+        if (GO_PC.GetConnectionLeft())
+        {
+            if (tileLocation.GetComponent<TileConnections>().GetConnectionLeft())
+            {
+                //connected left
+
+            }
+        }
+
+        if (GO_PC.GetConnectionRight())
+        {
+            if (tileLocation.GetComponent<TileConnections>().GetConnectionRight())
+            {
+                //connected right
+
+            }
+        }
     }
 }
