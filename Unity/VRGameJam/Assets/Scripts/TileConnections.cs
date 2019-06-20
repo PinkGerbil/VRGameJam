@@ -9,6 +9,8 @@ public class TileConnections : MonoBehaviour
     public GameObject ConnectionLeft;
     public GameObject ConnectionRight;
 
+    public GameObject PipeCon;
+
     /// <summary>
     /// sets the upwards connection
     /// </summary>
@@ -78,5 +80,23 @@ public class TileConnections : MonoBehaviour
     public GameObject GetConnectionRight()
     {
         return ConnectionRight;
+    }
+
+    /// <summary>
+    /// sets what pipe is connected on top of the grid spot
+    /// </summary>
+    /// <param name="other">GameObject</param>
+    public void SetPipeCon(GameObject other)
+    {
+        PipeCon = other;
+    }
+
+    /// <summary>
+    /// returns the pipe on top of grid
+    /// </summary>
+    /// <returns>Pipe connected to tile</returns>
+    public GameObject GetPipeCon()
+    {
+        return PipeCon; 
     }
 }

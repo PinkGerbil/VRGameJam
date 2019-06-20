@@ -6,8 +6,9 @@ using UnityEngine.UI;
 public class Connections : MonoBehaviour
 {
     public Canvas tileHolder;
-
     public GameObject[,] tiles = new GameObject[6,6];
+
+    private int i;
 
     /// <summary>
     /// this is called when the object is initialised 
@@ -23,17 +24,17 @@ public class Connections : MonoBehaviour
     /// </summary>
     public void SetChildren()
     {
-        for (int i = 0; i < tileHolder.transform.childCount; i++)
+
+        for (int y = 0; y < 6; y++)
         {
-            GameObject temp = tileHolder.transform.GetChild(i).gameObject;
-            for (int y = 0; y < 6; y++)
+            for (int x = 0; x < 6; x++)
             {
-                for (int x = 0; x < 6; x++)
-                {
-                    tiles[x, y] = temp;
-                }
+                GameObject temp = tileHolder.transform.GetChild(i).gameObject;
+                tiles[x, y] = temp;
+                i++;
             }
         }
+        
     }
 
     /// <summary>
@@ -67,8 +68,8 @@ public class Connections : MonoBehaviour
     /// returns the array of tiles
     /// </summary>
     /// <returns>the tiles array</returns>
-    public GameObject[,] GetArray()
+    public GameObject GetArray(int x, int y)
     {
-        return tiles;
+        return tiles[x, y];
     }
 }

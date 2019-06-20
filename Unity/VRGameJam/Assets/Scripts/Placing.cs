@@ -6,6 +6,9 @@ public class Placing : MonoBehaviour
 {
     public bool used;
 
+    public bool connectedToStart;
+    public bool connectedToEnd;
+
     PipeConnections GO_PC;
 
     public GameObject tileLocation;
@@ -30,6 +33,8 @@ public class Placing : MonoBehaviour
     {
         tileLocation = tile;
 
+        tileLocation.GetComponent<TileConnections>().SetPipeCon(this.gameObject);
+
         used = true;
     }
 
@@ -49,7 +54,13 @@ public class Placing : MonoBehaviour
     {
         used = false;
 
-        tileLocation = null;
+        if(tileLocation != null)
+        {
+            if(tileLocation.GetComponent<TileConnections>() != null)
+                tileLocation.GetComponent<TileConnections>().SetPipeCon(null);
+
+            tileLocation = null;
+        }
     }
 
     /// <summary>
@@ -67,40 +78,61 @@ public class Placing : MonoBehaviour
     /// </summary>
     private void CheckAdjacentTiles()
     {
-        if (GO_PC.GetConnectionUp())
+        if(tileLocation != null)
         {
-            if (tileLocation.GetComponent<TileConnections>().GetConnectionUp())
+            if (GO_PC.GetConnectionUp())
             {
-                //connected up
+                if (tileLocation.GetComponent<TileConnections>().GetConnectionUp() != null)
+                {
+                    //connected up
+                    GameObject upCon = tileLocation.GetComponent<TileConnections>().GetConnectionUp();
+                    upCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
+                }
+            }
 
+            if(GO_PC.GetConnectionDown())
+            {
+                if (tileLocation.GetComponent<TileConnections>().GetConnectionDown() != null)
+                {
+                    //connected down
+
+                }   
+            }
+
+            if (GO_PC.GetConnectionLeft())
+            {
+                if (tileLocation.GetComponent<TileConnections>().GetConnectionLeft() != null)
+                {
+                    //connected left
+
+                }
+            }
+
+            if (GO_PC.GetConnectionRight())
+            {
+                if (tileLocation.GetComponent<TileConnections>().GetConnectionRight() != null)
+                {
+                    //connected right
+
+                }
             }
         }
+    }
 
-        if(GO_PC.GetConnectionDown())
+    public void CheckConnectionsOfPipe(GameObject other)
+    {
+        if(this.gameObject.GetComponent<PipeConnections>().GetConnectionUp() && other.GetComponent<PipeConnections>().GetConnectionDown())
         {
-            if (tileLocation.GetComponent<TileConnections>().GetConnectionDown())
-            {
-                //connected down
-
-            }   
+            //connect upwards to downwards
+        }
+        if (this.gameObject.GetComponent<PipeConnections>().GetConnectionDown() && other.GetComponent<PipeConnections>().GetConnectionUp())
+        {
+            //connect downwards to upwards
+        }
+        if (this.gameObject.GetComponent<PipeConnections>().GetConnectionDown() && other.GetComponent<PipeConnections>().GetConnectionUp())
+        {
+            //connect downwards to upwards
         }
 
-        if (GO_PC.GetConnectionLeft())
-        {
-            if (tileLocation.GetComponent<TileConnections>().GetConnectionLeft())
-            {
-                //connected left
-
-            }
-        }
-
-        if (GO_PC.GetConnectionRight())
-        {
-            if (tileLocation.GetComponent<TileConnections>().GetConnectionRight())
-            {
-                //connected right
-
-            }
-        }
     }
 }
