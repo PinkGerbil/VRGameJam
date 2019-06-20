@@ -9,6 +9,10 @@ public class Placing : MonoBehaviour
     public bool connectedToStart;
     public bool connectedToEnd;
 
+    public Material red;
+    public Material blue;
+    public Material pink;
+
     public PipeConnections GO_PC;
 
     public GameObject tileLocation;
@@ -69,8 +73,25 @@ public class Placing : MonoBehaviour
     public void Update()
     {
         //check adjacent tiles
-        CheckAdjacentTiles();
         //check the connection of the object on tile
+        CheckAdjacentTiles();
+
+        if (connectedToStart)
+        {
+            this.gameObject.GetComponent<MeshRenderer>().material = blue;
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().material = red;
+        }
+        if (connectedToEnd)
+        {
+            this.gameObject.GetComponent<MeshRenderer>().material = pink;
+        }
+        else
+        {
+            this.gameObject.GetComponent<MeshRenderer>().material = red;
+        }
     }
 
     /// <summary>
@@ -87,6 +108,23 @@ public class Placing : MonoBehaviour
                     //connected up
                     GameObject upCon = tileLocation.GetComponent<TileConnections>().GetConnectionUp();
                     upCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
+                    if (upCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "Start")
+                    {
+                        connectedToStart = true;
+                    }
+                    else
+                    {
+                        connectedToStart = false;
+                    }
+                    if (upCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "End")
+                    {
+                        connectedToEnd = true;
+                    }
+                    else
+                    {
+                        connectedToEnd = false;
+                    }
+                    CheckConnectionsOfPipe(upCon.gameObject.GetComponent<TileConnections>().GetPipeCon());
                 }
             }
 
@@ -97,6 +135,23 @@ public class Placing : MonoBehaviour
                     //connected down
                     GameObject downCon = tileLocation.GetComponent<TileConnections>().GetConnectionDown();
                     downCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
+                    if(downCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "Start")
+                    {
+                        connectedToStart = true; 
+                    }
+                    else
+                    {
+                        connectedToStart = false;
+                    }
+                    if (downCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "End")
+                    {
+                        connectedToEnd = true;
+                    }
+                    else
+                    {
+                        connectedToEnd = false;
+                    }
+                    CheckConnectionsOfPipe(downCon.gameObject.GetComponent<TileConnections>().GetPipeCon());
                 }   
             }
 
@@ -107,6 +162,23 @@ public class Placing : MonoBehaviour
                     //connected left
                     GameObject leftCon = tileLocation.GetComponent<TileConnections>().GetConnectionLeft();
                     leftCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
+                    if (leftCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "Start")
+                    {
+                        connectedToStart = true;
+                    }
+                    else
+                    {
+                        connectedToStart = false;
+                    }
+                    if (leftCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "End")
+                    {
+                        connectedToEnd = true;
+                    }
+                    else
+                    {
+                        connectedToEnd = false;
+                    }
+                    CheckConnectionsOfPipe(leftCon.gameObject.GetComponent<TileConnections>().GetPipeCon());
                 }
             }
 
@@ -117,6 +189,23 @@ public class Placing : MonoBehaviour
                     //connected right
                     GameObject rightCon = tileLocation.GetComponent<TileConnections>().GetConnectionRight();
                     rightCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
+                    if (rightCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "Start")
+                    {
+                        connectedToStart = true;
+                    }
+                    else
+                    {
+                        connectedToStart = false;
+                    }
+                    if (rightCon.gameObject.GetComponent<TileConnections>().GetPipeCon().name == "End")
+                    {
+                        connectedToEnd = true;
+                    }
+                    else
+                    {
+                        connectedToEnd = false;
+                    }
+                    CheckConnectionsOfPipe(rightCon.gameObject.GetComponent<TileConnections>().GetPipeCon());
                 }
             }
         }
