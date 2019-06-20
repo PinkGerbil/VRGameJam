@@ -9,7 +9,7 @@ public class Placing : MonoBehaviour
     public bool connectedToStart;
     public bool connectedToEnd;
 
-    PipeConnections GO_PC;
+    public PipeConnections GO_PC;
 
     public GameObject tileLocation;
 
@@ -95,7 +95,8 @@ public class Placing : MonoBehaviour
                 if (tileLocation.GetComponent<TileConnections>().GetConnectionDown() != null)
                 {
                     //connected down
-
+                    GameObject downCon = tileLocation.GetComponent<TileConnections>().GetConnectionDown();
+                    downCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
                 }   
             }
 
@@ -104,7 +105,8 @@ public class Placing : MonoBehaviour
                 if (tileLocation.GetComponent<TileConnections>().GetConnectionLeft() != null)
                 {
                     //connected left
-
+                    GameObject leftCon = tileLocation.GetComponent<TileConnections>().GetConnectionLeft();
+                    leftCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
                 }
             }
 
@@ -113,7 +115,8 @@ public class Placing : MonoBehaviour
                 if (tileLocation.GetComponent<TileConnections>().GetConnectionRight() != null)
                 {
                     //connected right
-
+                    GameObject rightCon = tileLocation.GetComponent<TileConnections>().GetConnectionRight();
+                    rightCon.gameObject.GetComponent<TileConnections>().GetPipeCon();
                 }
             }
         }
@@ -129,10 +132,13 @@ public class Placing : MonoBehaviour
         {
             //connect downwards to upwards
         }
-        if (this.gameObject.GetComponent<PipeConnections>().GetConnectionDown() && other.GetComponent<PipeConnections>().GetConnectionUp())
+        if (this.gameObject.GetComponent<PipeConnections>().GetConnectionLeft() && other.GetComponent<PipeConnections>().GetConnectionRight())
         {
-            //connect downwards to upwards
+            //connect left to right
         }
-
+        if (this.gameObject.GetComponent<PipeConnections>().GetConnectionRight() && other.GetComponent<PipeConnections>().GetConnectionLeft())
+        {
+            //connect right to left
+        }
     }
 }

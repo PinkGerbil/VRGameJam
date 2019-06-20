@@ -4706,10 +4706,10 @@ MonoBehaviour:
   EndPiece: {fileID: 1612492130}
   startTile: {fileID: 0}
   endTile: {fileID: 0}
-  xPosInGridStart: 2
-  yPosInGridStart: 1
+  xPosInGridStart: 0
+  yPosInGridStart: 0
   xPosInGridEnd: 5
-  yPosInGridEnd: 4
+  yPosInGridEnd: 5
 --- !u!4 &1583087478
 Transform:
   m_ObjectHideFlags: 0

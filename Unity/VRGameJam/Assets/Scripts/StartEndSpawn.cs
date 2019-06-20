@@ -19,17 +19,25 @@ public class StartEndSpawn : MonoBehaviour
     public int xPosInGridEnd;
     public int yPosInGridEnd;
 
+    /// <summary>
+    /// calls this function once a frame
+    /// </summary>
     private void Update()
     {
         MakeStartEndSpaces(); 
     }
 
+    /// <summary>
+    /// Spawns the start and end places on the grid
+    /// </summary>
     public void MakeStartEndSpaces()
     {
         startTile = tileHolder.GetComponent<Connections>().GetArray(xPosInGridStart, yPosInGridStart);
+        startTile.GetComponent<TileConnections>().SetPipeCon(StartPiece);
         StartPiece.transform.position = startTile.transform.position;
 
         endTile = tileHolder.GetComponent<Connections>().GetArray(xPosInGridEnd, yPosInGridEnd);
+        endTile.GetComponent<TileConnections>().SetPipeCon(EndPiece);
         EndPiece.transform.position = endTile.transform.position;
     }
 
