@@ -25,6 +25,8 @@ public class Placing : MonoBehaviour
          GO_PC = this.gameObject.GetComponent<PipeConnections>(); 
 
         used = false;
+        connectedToStart = false; 
+        connectedToEnd = false; 
 
         tileLocation = null;
     }
@@ -76,21 +78,18 @@ public class Placing : MonoBehaviour
         //check the connection of the object on tile
         CheckAdjacentTiles();
 
-        if (connectedToStart)
+        if (connectedToStart && !connectedToEnd)
         {
             this.gameObject.GetComponent<MeshRenderer>().material = blue;
         }
-        else
-        {
-            this.gameObject.GetComponent<MeshRenderer>().material = red;
-        }
-        if (connectedToEnd)
+        if (connectedToEnd && !connectedToStart)
         {
             this.gameObject.GetComponent<MeshRenderer>().material = pink;
         }
         else
         {
-            this.gameObject.GetComponent<MeshRenderer>().material = red;
+            if (!connectedToStart && !connectedToEnd)
+            { this.gameObject.GetComponent<MeshRenderer>().material = red; }
         }
     }
 
@@ -216,18 +215,53 @@ public class Placing : MonoBehaviour
         if(this.gameObject.GetComponent<PipeConnections>().GetConnectionUp() && other.GetComponent<PipeConnections>().GetConnectionDown())
         {
             //connect upwards to downwards
+            if (other.GetComponent<Placing>().connectedToEnd)
+            {
+                this.connectedToEnd = true;
+            }
+            if (other.GetComponent<Placing>().connectedToStart)
+            {
+                this.connectedToStart = true;
+            }
         }
         if (this.gameObject.GetComponent<PipeConnections>().GetConnectionDown() && other.GetComponent<PipeConnections>().GetConnectionUp())
         {
             //connect downwards to upwards
+            //connect upwards to downwards
+            if (other.GetComponent<Placing>().connectedToEnd)
+            {
+                this.connectedToEnd = true;
+            }
+            if (other.GetComponent<Placing>().connectedToStart)
+            {
+                this.connectedToStart = true;
+            }
         }
         if (this.gameObject.GetComponent<PipeConnections>().GetConnectionLeft() && other.GetComponent<PipeConnections>().GetConnectionRight())
         {
             //connect left to right
+            //connect upwards to downwards
+            if (other.GetComponent<Placing>().connectedToEnd)
+            {
+                this.connectedToEnd = true;
+            }
+            if (other.GetComponent<Placing>().connectedToStart)
+            {
+                this.connectedToStart = true;
+            }
         }
         if (this.gameObject.GetComponent<PipeConnections>().GetConnectionRight() && other.GetComponent<PipeConnections>().GetConnectionLeft())
         {
             //connect right to left
+            //connect upwards to downwards
+            if (other.GetComponent<Placing>().connectedToEnd)
+            {
+                this.connectedToEnd = true;
+            }
+            if (other.GetComponent<Placing>().connectedToStart)
+            {
+                this.connectedToStart = true;
+            }
         }
     }
 }

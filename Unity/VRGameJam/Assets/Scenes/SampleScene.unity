@@ -1836,6 +1836,10 @@ MonoBehaviour:
   used: 0
   connectedToStart: 0
   connectedToEnd: 0
+  red: {fileID: 2100000, guid: c040a70c1b40ec64bb8d9d1bd98edda7, type: 2}
+  blue: {fileID: 2100000, guid: 8909837d0248b7c41a8e1b2c7f5ba175, type: 2}
+  pink: {fileID: 2100000, guid: 3143dc9923de68f4ab4f17af219adba1, type: 2}
+  GO_PC: {fileID: 0}
   tileLocation: {fileID: 0}
 --- !u!1 &493649301 stripped
 GameObject:
@@ -2170,6 +2174,10 @@ MonoBehaviour:
   used: 0
   connectedToStart: 0
   connectedToEnd: 0
+  red: {fileID: 2100000, guid: c040a70c1b40ec64bb8d9d1bd98edda7, type: 2}
+  blue: {fileID: 2100000, guid: 8909837d0248b7c41a8e1b2c7f5ba175, type: 2}
+  pink: {fileID: 2100000, guid: 3143dc9923de68f4ab4f17af219adba1, type: 2}
+  GO_PC: {fileID: 0}
   tileLocation: {fileID: 0}
 --- !u!1 &595920708
 GameObject:
@@ -5087,6 +5095,10 @@ MonoBehaviour:
   used: 0
   connectedToStart: 0
   connectedToEnd: 0
+  red: {fileID: 2100000, guid: c040a70c1b40ec64bb8d9d1bd98edda7, type: 2}
+  blue: {fileID: 2100000, guid: 8909837d0248b7c41a8e1b2c7f5ba175, type: 2}
+  pink: {fileID: 2100000, guid: 3143dc9923de68f4ab4f17af219adba1, type: 2}
+  GO_PC: {fileID: 0}
   tileLocation: {fileID: 0}
 --- !u!1 &1907755135
 GameObject:

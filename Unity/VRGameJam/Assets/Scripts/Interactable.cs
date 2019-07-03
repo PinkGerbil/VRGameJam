@@ -22,6 +22,10 @@ public class Interactable : MonoBehaviour
     public void PickUp(GameObject target)
     {
         this.gameObject.GetComponent<Placing>().PickUpFromTile();
+        if (!this.gameObject.GetComponent<Placing>().connectedToStart)
+        { this.gameObject.GetComponent<Placing>().connectedToStart = false; }
+        if (!this.gameObject.GetComponent<Placing>().connectedToEnd)
+        { this.gameObject.GetComponent<Placing>().connectedToEnd = false; }
         this.transform.position = target.transform.position + new Vector3(0.5f, 1.0f, 1.0f);
     }
 
